@@ -1,19 +1,19 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Reactive;
-using NuGet.Protocol.Core.Types;
+using CompellingExample.Shared.Models;
 using ReactiveUI;
 
 namespace CompellingExample.ViewModels
 {
     public class NugetDetailsViewModel : ReactiveObject
     {
-        private readonly IPackageSearchMetadata _metadata;
+        private readonly NugetPackageDto _dto;
         private readonly Uri _defaultUrl;
 
-        public NugetDetailsViewModel(IPackageSearchMetadata metadata)
+        public NugetDetailsViewModel(NugetPackageDto dto)
         {
-            _metadata = metadata;
+            _dto = dto;
             _defaultUrl = new Uri("https://git.io/fAlfh");
             OpenPage = ReactiveCommand.Create(() =>
             {
@@ -23,11 +23,13 @@ namespace CompellingExample.ViewModels
                 });
             });
         }
+
+
     
-        public Uri IconUrl => _metadata.IconUrl ?? _defaultUrl;
-        public string Description => _metadata.Description;
-        public Uri ProjectUrl => _metadata.ProjectUrl;
-        public string Title => _metadata.Title;
+        public Uri IconUrl => _dto.IconUrl ?? _defaultUrl;
+        public string Description => _dto.Description;
+        public Uri ProjectUrl => _dto.ProjectUrl;
+        public string Title => _dto.Title;
 
         public ReactiveCommand<Unit, Unit> OpenPage { get; }
     }

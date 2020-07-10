@@ -4,9 +4,9 @@ using System.Linq;
 using System.Reactive.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using NuGet.Configuration;
-using NuGet.Protocol.Core.Types;
+using CompellingExample.Services;
 using ReactiveUI;
+using Splat;
 
 namespace CompellingExample.ViewModels
 {
@@ -14,12 +14,16 @@ namespace CompellingExample.ViewModels
     {
         private string _searchTerm;
 
+        private readonly INugetService _nugetService;
+
         private readonly ObservableAsPropertyHelper<IEnumerable<NugetDetailsViewModel>> _searchResults;
 
         private readonly ObservableAsPropertyHelper<bool> _isAvailable;
 
-        public AppViewModel()
+        public AppViewModel(INugetService nugetService = null)
         {
+            if (nugetService is null) _nugetService = Locator.Current.GetService<INugetService>();
+
             _searchResults = this
                 .WhenAnyValue(x => x.SearchTerm)
                 .Throttle(TimeSpan.FromMilliseconds(800))
@@ -48,18 +52,11 @@ namespace CompellingExample.ViewModels
         }
 
 
-        private static async Task<IEnumerable<NugetDetailsViewModel>> SearchNuGetPackages(
+        private async Task<IEnumerable<NugetDetailsViewModel>> SearchNuGetPackages(
             string term, CancellationToken token)
         {
-            var providers = new List<Lazy<INuGetResourceProvider>>();
-            providers.AddRange(Repository.Provider.GetCoreV3());
-            var packageSource = new PackageSource("https://api.nuget.org/v3/index.json");
-            var source = new SourceRepository(packageSource, providers);
-
-            var filter = new SearchFilter(false);
-            var resource = await source.GetResourceAsync<PackageSearchResource>(token).ConfigureAwait(false);
-            var metadata = await resource.SearchAsync(term, filter, 0, 10, null, token).ConfigureAwait(false);
-            return metadata.Select(x => new NugetDetailsViewModel(x));
+            var result = await _nugetService.GetPackages(term);
+            return result.Select(x => new NugetDetailsViewModel(x));
         }
 
 

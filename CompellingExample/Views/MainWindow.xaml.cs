@@ -2,7 +2,7 @@
 using CompellingExample.ViewModels;
 using ReactiveUI;
 
-namespace CompellingExample
+namespace CompellingExample.Views
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml

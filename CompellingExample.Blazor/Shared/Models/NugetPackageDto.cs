@@ -1,7 +1,7 @@
 ﻿using System;
 using NuGet.Protocol.Core.Types;
 
-namespace CompellingExample.Models.Models
+namespace CompellingExample.Blazor.Shared.Models
 {
     public class NugetPackageDto
     {

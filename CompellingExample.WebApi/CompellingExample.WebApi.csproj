@@ -9,9 +9,5 @@
     <PackageReference Include="NuGet.Protocol" Version="5.6.0" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\CompellingExample.Shared\CompellingExample.Models.csproj" />
-  </ItemGroup>
-
 
 </Project>

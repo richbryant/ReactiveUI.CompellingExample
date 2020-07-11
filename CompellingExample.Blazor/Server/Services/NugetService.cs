@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using CompellingExample.Blazor.Shared.Models;
 using NuGet.Configuration;
 using NuGet.Protocol.Core.Types;
 
-namespace CompellingExample.WebApi.Services
+namespace CompellingExample.Blazor.Server.Services
 {
     public interface INugetService
     {

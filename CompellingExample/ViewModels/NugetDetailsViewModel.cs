@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Reactive;
-using CompellingExample.Models.Models;
+using CompellingExample.Blazor.Shared.Models;
 using ReactiveUI;
 
 namespace CompellingExample.ViewModels

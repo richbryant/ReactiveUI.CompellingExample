@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Refit;
 using System.Threading.Tasks;
-using CompellingExample.Models.Models;
+using CompellingExample.Blazor.Shared.Models;
 
 namespace CompellingExample.Services
 {

@@ -15,7 +15,7 @@ namespace CompellingExample
         {
             Locator.CurrentMutable.RegisterViewsForViewModels(Assembly.GetCallingAssembly());
             Locator.CurrentMutable.RegisterLazySingleton(() =>
-                RestService.For<INugetService>("https://localhost:44316/api"), typeof(INugetService));
+                RestService.For<INugetService>("https://localhost:44394/api"), typeof(INugetService));
         }
 
     }

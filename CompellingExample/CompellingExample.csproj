@@ -13,7 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CompellingExample.Shared\CompellingExample.Models.csproj" />
+    <ProjectReference Include="..\CompellingExample.Blazor\Shared\CompellingExample.Blazor.Shared.csproj" />
   </ItemGroup>
 
 </Project>

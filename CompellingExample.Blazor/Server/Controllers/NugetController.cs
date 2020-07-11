@@ -1,5 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using CompellingExample.Blazor.Server.Extensions;
 using CompellingExample.Blazor.Server.Services;
 using Microsoft.AspNetCore.Mvc;

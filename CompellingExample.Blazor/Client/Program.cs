@@ -1,12 +1,17 @@
 using System;
-using System.Net.Http;
-using System.Collections.Generic;
 using System.Threading.Tasks;
-using System.Text;
+using Blazorise;
+using Blazorise.Bootstrap;
+using Blazorise.Icons.FontAwesome;
+using CompellingExample.Blazor.Client.Views;
+using CompellingExample.ViewModels;
+using CompellingExample.ViewModels.Services;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
+using ReactiveUI;
+using Refit;
+using Splat;
+using Splat.Microsoft.Extensions.DependencyInjection;
 
 namespace CompellingExample.Blazor.Client
 {
@@ -15,11 +20,38 @@ namespace CompellingExample.Blazor.Client
         public static async Task Main(string[] args)
         {
             var builder = WebAssemblyHostBuilder.CreateDefault(args);
+            
+            builder.Services
+                .AddBlazorise( options =>
+                {
+                    options.ChangeTextOnKeyPress = false;
+                } )
+                .AddBootstrapProviders()
+                .AddFontAwesomeIcons();
+
+            builder.Services.UseMicrosoftDependencyResolver();
+            var resolver = Locator.CurrentMutable;
+            resolver.InitializeSplat();
+            resolver.InitializeReactiveUI();
+
+            Locator.CurrentMutable.Register(() => new IndexView(), typeof(IViewFor<AppViewModel>));
+            Locator.CurrentMutable.Register(() => new NugetDetailsView(), typeof(IViewFor<NugetDetailsViewModel>));
+
+            Locator.CurrentMutable.RegisterLazySingleton(() =>
+                RestService.For<INugetService>("https://localhost:44394/api", new RefitSettings{ ContentSerializer = new JsonContentSerializer()}), typeof(INugetService));
+
+            builder.Services.AddScoped<AppViewModel>();
+
+            
+
             builder.RootComponents.Add<App>("app");
+            var host = builder.Build();
 
-            builder.Services.AddTransient(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
+            host.Services
+                .UseBootstrapProviders()
+                .UseFontAwesomeIcons();
 
-            await builder.Build().RunAsync();
+            await host.RunAsync();
         }
     }
 }

@@ -1,0 +1,11 @@
+﻿@inherits ReactiveComponentBase<NugetDetailsViewModel>
+<TableRow>
+    <TableRowCell>
+        <Figure Size="FigureSize.Is64x64">
+            <FigureImage Source="@ViewModel.IconUrl.ToString()" AlternateText="@ViewModel.Title"/>
+        </Figure>
+    </TableRowCell>
+    <TableRowCell>
+        @ViewModel.Description
+    </TableRowCell>
+</TableRow>

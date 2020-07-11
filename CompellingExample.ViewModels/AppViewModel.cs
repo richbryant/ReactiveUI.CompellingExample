@@ -58,8 +58,5 @@ namespace CompellingExample.ViewModels
             var result = await _nugetService.GetPackages(term);
             return result.Select(x => new NugetDetailsViewModel(x));
         }
-
-
-        
     }
 }

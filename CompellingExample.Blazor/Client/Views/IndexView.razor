@@ -1,0 +1,30 @@
+﻿@page "/"
+@inherits ReactiveComponentBase<AppViewModel>
+
+<Container class="mainContent">
+    <header>
+        <Addons>
+            <Addon AddonType="AddonType.Body">
+                <TextEdit @bind-Text="ViewModel.SearchTerm" Placeholder="Search nuget.org..." />
+            </Addon>
+            <Addon AddonType="AddonType.End">
+                <Button Color="Color.Secondary" Clicked="@SearchTextChanged">Search</Button>
+            </Addon>
+        </Addons>
+        
+    </header>
+    <main>
+        @if (ShowResults)
+        {
+            <Table>
+                @foreach (var result in ViewModel.SearchResults)
+                {
+                    <NugetDetailsView NugetViewModel="@result"/>
+                }
+            </Table>
+        }
+    </main>
+</Container>
+
+
+

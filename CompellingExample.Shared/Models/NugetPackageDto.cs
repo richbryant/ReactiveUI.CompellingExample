@@ -1,19 +1,16 @@
 ﻿using System;
 using NuGet.Protocol.Core.Types;
 
-namespace CompellingExample.Shared.Models
+namespace CompellingExample.Models.Models
 {
     public class NugetPackageDto
     {
-        private readonly Uri _defaultUrl;
-
         public NugetPackageDto()
         { }
 
         public NugetPackageDto(IPackageSearchMetadata metadata)
         {
-            _defaultUrl = new Uri("https://git.io/fAlfh");
-            IconUrl = metadata.IconUrl ?? _defaultUrl;
+            IconUrl = metadata.IconUrl ?? new Uri("https://git.io/fAlfh");
             Description = metadata.Description;
             ProjectUrl = metadata.ProjectUrl;
             Title = metadata.Title;

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Reactive;
-using CompellingExample.Shared.Models;
+using CompellingExample.Models.Models;
 using ReactiveUI;
 
 namespace CompellingExample.ViewModels

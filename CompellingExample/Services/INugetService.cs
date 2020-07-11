@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Refit;
 using System.Threading.Tasks;
-using CompellingExample.Shared.Models;
+using CompellingExample.Models.Models;
 
 namespace CompellingExample.Services
 {

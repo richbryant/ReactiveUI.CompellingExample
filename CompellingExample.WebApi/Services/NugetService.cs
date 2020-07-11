@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using CompellingExample.Shared.Models;
+using CompellingExample.Models.Models;
 using NuGet.Configuration;
 using NuGet.Protocol.Core.Types;
 

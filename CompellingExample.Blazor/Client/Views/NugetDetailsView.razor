@@ -5,7 +5,15 @@
             <FigureImage Source="@ViewModel.IconUrl.ToString()" AlternateText="@ViewModel.Title"/>
         </Figure>
     </TableRowCell>
-    <TableRowCell>
-        @ViewModel.Description
+    <TableRowCell Class="boxContent">
+        <header>
+            <h3>@ViewModel.Title</h3>
+        </header>
+        <main>@ViewModel.Description</main>
+        <footer>
+            <Blazorise.Link To="@ViewModel.ProjectUrl.ToString()">
+                open
+            </Blazorise.Link>
+        </footer>
     </TableRowCell>
 </TableRow>

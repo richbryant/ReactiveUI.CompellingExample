@@ -41,6 +41,7 @@ namespace CompellingExample.Blazor.Client.Views
 
         private void SearchTextChanged()
         {
+            //This is really just here for sanity chacking and to make the textbox lose focus.
             Console.WriteLine(ViewModel.SearchTerm);
             Console.WriteLine($"SearchResults is {ViewModel.SearchResults.Count()}");
         }

@@ -10,3 +10,9 @@ html, body {
     grid-template-rows: auto 1fr;
 }
 
+.boxContent {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    text-align: center;
+}
+

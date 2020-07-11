@@ -14,6 +14,11 @@
 
   <ItemGroup>
     <ProjectReference Include="..\CompellingExample.Blazor\Shared\CompellingExample.Blazor.Shared.csproj" />
+    <ProjectReference Include="..\CompellingExample.ViewModels\CompellingExample.ViewModels.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Services\" />
   </ItemGroup>
 
 </Project>

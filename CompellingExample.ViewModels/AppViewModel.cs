@@ -4,7 +4,7 @@ using System.Linq;
 using System.Reactive.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using CompellingExample.Services;
+using CompellingExample.ViewModels.Services;
 using ReactiveUI;
 using Splat;
 

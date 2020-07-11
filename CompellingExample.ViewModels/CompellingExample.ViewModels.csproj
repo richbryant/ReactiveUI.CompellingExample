@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="reactiveui" Version="11.4.17" />
+    <PackageReference Include="refit" Version="5.1.67" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CompellingExample.Blazor\Shared\CompellingExample.Blazor.Shared.csproj" />
+  </ItemGroup>
+
+</Project>

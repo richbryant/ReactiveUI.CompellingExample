@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
-using Refit;
 using System.Threading.Tasks;
 using CompellingExample.Blazor.Shared.Models;
+using Refit;
 
-namespace CompellingExample.Services
+namespace CompellingExample.ViewModels.Services
 {
     public interface INugetService
     {

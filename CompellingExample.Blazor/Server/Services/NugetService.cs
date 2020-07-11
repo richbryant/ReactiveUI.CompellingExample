@@ -7,16 +7,21 @@ using CompellingExample.Blazor.Shared.Models;
 using LanguageExt;
 using NuGet.Configuration;
 using NuGet.Protocol.Core.Types;
+using static LanguageExt.Prelude;
+
 
 namespace CompellingExample.Blazor.Server.Services
 {
     public interface INugetService
     {
-        Task<IEnumerable<NugetPackageDto>> GetNugetPackages(string term);
+        TryAsync<IEnumerable<NugetPackageDto>> TryGetNugetPackagesAsync(string term);
     }
 
     public class NugetService : INugetService
     {
+        public TryAsync<IEnumerable<NugetPackageDto>> TryGetNugetPackagesAsync(string term)
+            => TryAsync(GetNugetPackages(term));
+
         public async Task<IEnumerable<NugetPackageDto>> GetNugetPackages(string term) =>
             await NugetFunctions.NuGetLocalRepository()
                 .GetResource()

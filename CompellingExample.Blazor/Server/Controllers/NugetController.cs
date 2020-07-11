@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
+using CompellingExample.Blazor.Server.Extensions;
 using CompellingExample.Blazor.Server.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -11,23 +12,12 @@ namespace CompellingExample.Blazor.Server.Controllers
     {
         private readonly INugetService _nugetService;
 
-        public NugetController(INugetService nugetService)
-        {
-            _nugetService = nugetService;
-        }
+        public NugetController(INugetService nugetService) => _nugetService = nugetService;
+
 
         [HttpGet("{term}")]
-        public async Task<IActionResult> GetNugetResults(string term)
-        {
-            try
-            {
-                var result = await _nugetService.GetNugetPackages(term);
-                return Ok(result);
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex);
-            }
-        }
+        public async Task<IActionResult> GetNugetResults(string term) =>
+            await _nugetService.TryGetNugetPackagesAsync(term)
+                .ToActionResult();
     }
 }

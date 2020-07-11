@@ -1,14 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Reactive.Disposables;
-using System.Threading.Tasks;
-using Blazorise;
 using CompellingExample.ViewModels;
-using Microsoft.AspNetCore.Components;
 using ReactiveUI;
-using ReactiveUI.Blazor;
-using Splat;
 
 namespace CompellingExample.Blazor.Client.Views
 {
